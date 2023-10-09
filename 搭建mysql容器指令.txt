@@ -1,0 +1,14 @@
+docker run -p 3306:3306 --name mysql57 -v ~/mysql/sata:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=eric901104 --privileged=true mysql:5.7
+
+
+後臺運行
+docker run -d -p 3306:3306 --name mysql57 -v ~/mysql/sata:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=eric901104 --privileged=true mysql:5.7
+
+
+兩個命令都用於與 Docker 容器互動，但它們有不同的用途：
+
+docker exec -it CONTAINER_NAME_OR_ID bash 用於進入已經在運行的容器中的 bash shell。這對於在運行中的容器中執行命令或進行調試很有用，但前提是容器必須已經運行。
+
+docker run -ti mysql:5.7 bash 用於啟動一個新的容器並運行 bash shell。這個命令會啟動一個新的容器，而不需要容器已經存在。在這個新容器中，您可以執行 bash shell 以進行各種操作。
+
+因此，選擇取決於您的需求。如果您想要進入已經運行的容器，使用 docker exec 命令。如果您想要創建一個新的容器並立即進入其中的 bash shell，使用 docker run 命令。
